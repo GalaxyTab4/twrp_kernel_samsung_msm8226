@@ -101,16 +101,17 @@ extern struct security_operations *security_ops;
 static atomic_t selinux_secmark_refcount = ATOMIC_INIT(0);
 
 #ifdef CONFIG_SECURITY_SELINUX_DEVELOP
-int selinux_enforcing;
+int selinux_enforcing = 0;
 
 static int __init enforcing_setup(char *str)
 {
 	unsigned long enforcing;
 	if (!strict_strtoul(str, 0, &enforcing))
+<<<<<<< HEAD
 #ifdef CONFIG_ALWAYS_ENFORCE
 		selinux_enforcing = 1;
 #else
-		selinux_enforcing = enforcing ? 1 : 0;
+		selinux_enforcing = 0;
 #endif
 	return 1;
 }
